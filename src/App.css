@@ -1,0 +1,96 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Lato:wght@400&display=swap'); */
+
+/* ============================== */
+/* FULL APP                       */
+/* ============================== */
+/* html {
+    font-size: calc(10px + 2vmin);
+} */
+
+/* body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.35;
+} */
+
+.App {
+    /* background-color: #......; */
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 120px; /* height of footer (including padding) */
+}
+
+.main-content-container {
+    width: 60%;
+}
+
+.no-margins {
+    margin: 0;
+}
+
+/* ============================== */
+/* NAVBAR                         */
+/* ============================== */
+.navbar-container {
+    background-color: #f2f2f2;
+    /* color: #......; <- TEXT COLOR */
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.navbar-links {
+    margin-right: 20px;
+}
+
+.navbar-link {
+    color: black;
+    /* color: #......; <- TEXT COLOR */
+    padding-top: 24px;
+    float: right;
+    height: 60px;
+    width: 10%;
+    text-decoration: none;
+}
+
+.navbar-logo-link {
+    color: black;
+    /* color: #......; <- TEXT COLOR */
+    padding-top: 22px;
+    margin-left: 40px;
+    float: left;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.navbar-link:visited,
+.navbar-logo-link:visited {
+    color: black;
+    /* color: #......; <- TEXT COLOR */
+}
+
+/* ============================== */
+/* FOOTER                         */
+/* ============================== */
+.footer-container {
+    background-color: #f2f2f2;
+    /* color: #......; <- TEXT COLOR */
+    width: 100%;
+    position: absolute;
+    height: 80px;
+    bottom: 0;
+    padding-right: 20%;
+    padding-left: 20%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+/* HOME PAGE */
+/* .home-page-container {
+} */
