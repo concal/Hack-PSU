@@ -12,6 +12,79 @@ import LoginPage from './pages/login-page';
 import ProfilePage from './pages/profile-page';
 
 const App = () => {
+    // const handleAddUser = async (e) => {
+    //     e.preventDefault();
+    //     let result = await fetch('http://localhost:5000/register/user', {
+    //         method: 'post',
+    //         body: JSON.stringify({
+    //             name: 'connor calderon',
+    //             email: 'a@b.c',
+    //             password: 'pass',
+    //             privelege: true,
+    //             event_ids: [],
+    //             club_ids: [],
+    //         }),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    //     result = await result.json();
+    //     console.warn(result);
+    //     if (result) {
+    //         alert('Data saved successfully');
+    //         // Reset input fields
+    //     }
+    // };
+
+    // const handleAddClub = async (e) => {
+    //     e.preventDefault();
+    //     let result = await fetch('http://localhost:5000/register/club', {
+    //         method: 'post',
+    //         body: JSON.stringify({
+    //             club_id: 1,
+    //             category: 'cool category',
+    //             club_name: 'cool club',
+    //             club_description: 'We are the coolest club on campus.',
+    //         }),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    //     result = await result.json();
+    //     console.warn(result);
+    //     if (result) {
+    //         alert('Data saved successfully');
+    //         // Reset input fields
+    //     }
+    // };
+
+    // const handleAddEvent = async (e) => {
+    //     e.preventDefault();
+    //     let result = await fetch('http://localhost:5000/createEvent', {
+    //         method: 'post',
+    //         body: JSON.stringify({
+    //             event_id: 1,
+    //             is_official: true,
+    //             club_id: 1,
+    //             user_email: null,
+    //             start_time: Date(100),
+    //             end_time: Date(200),
+    //             location: 'IM Building',
+    //             description: 'This event is very cool',
+    //             title: 'The coolest event',
+    //         }),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    //     result = await result.json();
+    //     console.warn(result);
+    //     if (result) {
+    //         alert('Data saved successfully');
+    //         // Reset input fields
+    //     }
+    // };
+
     return (
         <Router>
             <div className="App">
