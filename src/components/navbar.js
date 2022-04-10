@@ -11,17 +11,17 @@ const Navbar = () => {
     return (
         <div className="navbar-container">
             <div className="navbar-section">
-                <Link to="./" className="navbar-logo-link">
-                    Give me a Nintendo Switch :)
+                <Link style={{color: "white"}} to="./" className="navbar-logo-link">
+                    Home Page
                 </Link>
                 {isLoggedIn && (
                     <Link to="./event-creation" className="navbar-link">
-                        <Button variant="success">Create an Event</Button>
+                        <Button style={{backgroundColor: "white", color: "black"}} variant="success">Create an Event</Button>
                     </Link>
                 )}
                 {isLoggedIn && (
                     <Link to="./club-creation" className="navbar-link">
-                        <Button variant="success">Create a Club</Button>
+                        <Button style={{backgroundColor: "white", color: "black"}} variant="success">Create a Club</Button>
                     </Link>
                 )}
                 
@@ -37,10 +37,10 @@ const Navbar = () => {
                         <Link to="./profile" className="navbar-link">
                             <FontAwesomeIcon icon={faUser} />
                         </Link>
-                        <Button variant="success">Log out</Button>
+                        <Button style={{backgroundColor: "white", color: "black"}} variant="success">Log out</Button>
                     </div>
                 ) : (
-                    <Button variant="success">Log in</Button>
+                    <Button style={{backgroundColor: "white", color: "black"}} variant="success">Log in</Button>
                 )}
             </div>
         </div>

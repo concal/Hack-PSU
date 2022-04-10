@@ -12,8 +12,8 @@ const ProfilePage = () => {
       <div className="profile-flex-box-container">
         <div className="profile-card-container">
           <img className="profile-photo"src={testimage} alt="userimage"/>
-          <b className="profile-name">NAME</b>
-          <p className="profile-description"align="left">description</p> {/*LIMIT THE LENGTH OF THIS DESCRIPTION */}
+          <b className="profile-name"> CLUB NAME</b>
+          <p className="profile-description"align="left">club description</p> {/*LIMIT THE LENGTH OF THIS DESCRIPTION */}
         </div>
         <div className="profile-events-container">
           <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
