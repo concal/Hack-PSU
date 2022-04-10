@@ -29,10 +29,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    privelege: {
-        type: Boolean,
-        required: true,
-    },
     event_ids: {
         type: Array,
         required: true,
@@ -62,12 +58,16 @@ const EventSchema = new mongoose.Schema({
     user_email: {
         type: String,
     },
+    date: {
+        type: String,
+        required: true,
+    },
     start_time: {
-        type: Date,
+        type: String,
         required: true,
     },
     end_time: {
-        type: Date,
+        type: String,
         required: true,
     },
     location: {
@@ -92,6 +92,10 @@ const ClubSchema = new mongoose.Schema({
         type: Number,
         required: true,
         unique: true,
+    },
+    owner_email: {
+        type: String,
+        required: true,
     },
     category: {
         type: String,
@@ -128,7 +132,6 @@ app.post('/register/user', async (req, resp) => {
         let result = await user.save();
         result = result.toObject();
         if (result) {
-            delete result.password;
             resp.send(req.body);
             console.log(result);
         } else {
@@ -167,6 +170,49 @@ app.post('/createEvent', async (req, resp) => {
             console.log('Something Went Wrong');
         }
     } catch (e) {
+        resp.send('Something Went Wrong');
+    }
+});
+
+app.post('/login', async (req, resp) => {
+    try {
+        const email = req.body.email;
+        const inputPassword = req.body.password;
+        const result = await User.find({ email: 'cfc5489@psu.edu' });
+        if (result.length == 0) {
+            resp.send(false);
+        } else {
+            correct_password = result[0].password;
+            console.log(email);
+            console.log(inputPassword);
+            console.log(correct_password);
+            if (result) {
+                resp.send(correct_password == inputPassword);
+                console.log(correct_password);
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
+app.get('/newEventID', async (req, resp) => {
+    try {
+        const result = await Event.findOne().sort('-event_id');
+        resp.send({ event_id: result.event_id + 1 });
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
+app.get('/newClubID', async (req, resp) => {
+    try {
+        const result = await Club.findOne().sort('-club_id');
+        resp.send({ club_id: result.club_id + 1 });
+    } catch (e) {
+        console.log(e);
         resp.send('Something Went Wrong');
     }
 });

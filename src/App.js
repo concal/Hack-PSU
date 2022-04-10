@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navbar from './components/navbar';
@@ -10,86 +11,18 @@ import EventCreationPage from './pages/event-creation-page';
 import EventPage from './pages/event-page';
 import LoginPage from './pages/login-page';
 import ProfilePage from './pages/profile-page';
+import SignUpPage from './pages/signup-page';
+import ClubCreationPage from './pages/create-club-page';
 
 const App = () => {
-    // const handleAddUser = async (e) => {
-    //     e.preventDefault();
-    //     let result = await fetch('http://localhost:5000/register/user', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             name: 'connor calderon',
-    //             email: 'a@b.c',
-    //             password: 'pass',
-    //             privelege: true,
-    //             event_ids: [],
-    //             club_ids: [],
-    //         }),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-    //     result = await result.json();
-    //     console.warn(result);
-    //     if (result) {
-    //         alert('Data saved successfully');
-    //         // Reset input fields
-    //     }
-    // };
-
-    // const handleAddClub = async (e) => {
-    //     e.preventDefault();
-    //     let result = await fetch('http://localhost:5000/register/club', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             club_id: 1,
-    //             category: 'cool category',
-    //             club_name: 'cool club',
-    //             club_description: 'We are the coolest club on campus.',
-    //         }),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-    //     result = await result.json();
-    //     console.warn(result);
-    //     if (result) {
-    //         alert('Data saved successfully');
-    //         // Reset input fields
-    //     }
-    // };
-
-    // const handleAddEvent = async (e) => {
-    //     e.preventDefault();
-    //     let result = await fetch('http://localhost:5000/createEvent', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             event_id: 1,
-    //             is_official: true,
-    //             club_id: 1,
-    //             user_email: null,
-    //             start_time: Date(100),
-    //             end_time: Date(200),
-    //             location: 'IM Building',
-    //             description: 'This event is very cool',
-    //             title: 'The coolest event',
-    //         }),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-    //     result = await result.json();
-    //     console.warn(result);
-    //     if (result) {
-    //         alert('Data saved successfully');
-    //         // Reset input fields
-    //     }
-    // };
-    //
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        sessionStorage.getItem('user') !== null
+    );
 
     return (
         <Router>
             <div className="App">
-                <Navbar />
+                <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
                 <div className="main-content-container">
                     <Switch>
                         <Route exact path="/" component={() => <HomePage />} />
@@ -111,12 +44,24 @@ const App = () => {
                         <Route
                             exact
                             path="/login"
-                            component={() => <LoginPage />}
+                            component={() => (
+                                <LoginPage setIsLoggedIn={setIsLoggedIn} />
+                            )}
                         />
                         <Route
                             exact
                             path="/profile"
                             component={() => <ProfilePage />}
+                        />
+                        <Route
+                            exact
+                            path="/signup"
+                            component={() => <SignUpPage />}
+                        />
+                        <Route
+                            exact
+                            path="/club-creation"
+                            component={() => <ClubCreationPage />}
                         />
                     </Switch>
                 </div>

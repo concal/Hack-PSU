@@ -1,23 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, Fragment } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const isLoggedIn = true;
-// const isLoggedIn = localStorage.getItem('user');
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+    const [redirect, setRedirect] = useState(false);
 
-const Navbar = () => {
+    const logout = () => {
+        sessionStorage.removeItem('user');
+        setIsLoggedIn(false);
+        setRedirect(true);
+    };
+
     return (
         <div className="navbar-container">
+            {redirect && <Redirect push to="/" />}
             <div className="navbar-section">
                 <Link to="./" className="navbar-logo-link">
                     Give me a Nintendo Switch :)
                 </Link>
                 {isLoggedIn && (
-                    <Link to="./event-creation" className="navbar-link">
-                        <Button variant="success">Create an Event</Button>
-                    </Link>
+                    <Fragment>
+                        <Link to="./club-creation" className="navbar-link">
+                            <Button variant="success">Create a Club</Button>
+                        </Link>
+                        <Link to="./event-creation" className="navbar-link">
+                            <Button variant="success">Create an Event</Button>
+                        </Link>
+                    </Fragment>
                 )}
             </div>
             <div className="navbar-section">
@@ -28,13 +40,24 @@ const Navbar = () => {
                             alignItems: 'center,',
                         }}
                     >
-                        <Link to="./profile" className="navbar-link">
-                            <FontAwesomeIcon icon={faUser} />
+                        <Link to="./profile">
+                            <FontAwesomeIcon
+                                icon={faUser}
+                                style={{
+                                    height: '32px',
+                                    marginTop: '4px',
+                                    marginRight: '12px',
+                                }}
+                            />
                         </Link>
-                        <Button variant="success">Log out</Button>
+                        <Button variant="success" onClick={logout}>
+                            Log out
+                        </Button>
                     </div>
                 ) : (
-                    <Button variant="success">Log in</Button>
+                    <Link to="/login">
+                        <Button variant="success">Log in</Button>
+                    </Link>
                 )}
             </div>
         </div>
