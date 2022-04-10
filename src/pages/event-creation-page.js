@@ -15,8 +15,6 @@ const EventCreationPage = () => {
     const [redirect, setRedirect] = useState(false);
     const [userClubs, setUserClubs] = useState([]);
 
-    console.log(club_name);
-
     useEffect(() => {
         const fetchClubs = async () => {
             const user_email = sessionStorage.getItem('user');
@@ -30,7 +28,6 @@ const EventCreationPage = () => {
                 },
             });
             result = await result.json();
-            console.log(result);
             setUserClubs(result);
         };
 

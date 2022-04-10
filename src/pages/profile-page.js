@@ -6,8 +6,6 @@ const ProfilePage = () => {
     const [events, setEvents] = useState([]);
     const [userInfo, setUserInfo] = useState([]);
 
-    console.log(userInfo);
-
     const cardElements = events.map((event) => {
         return (
             <Card
@@ -27,7 +25,6 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             const user_email = sessionStorage.getItem('user');
-            console.log('here');
             let result = await fetch('http://localhost:5000/users/events', {
                 method: 'post',
                 body: JSON.stringify({
@@ -47,7 +44,6 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchUserInfo = async () => {
             const user_email = sessionStorage.getItem('user');
-            console.log('here');
             let result = await fetch('http://localhost:5000/users/info', {
                 method: 'post',
                 body: JSON.stringify({

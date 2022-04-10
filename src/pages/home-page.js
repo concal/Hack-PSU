@@ -41,7 +41,6 @@ const HomePage = () => {
     useEffect(() => {
         const fetchSavedEvents = async () => {
             const user_email = sessionStorage.getItem('user');
-            console.log('here');
             let result = await fetch('http://localhost:5000/users/events', {
                 method: 'post',
                 body: JSON.stringify({
