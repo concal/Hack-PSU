@@ -7,15 +7,19 @@ import testimage from '../testimages/TESTUSER.jpg'
 const ProfilePage = () => {
   return (
     <div className="profile-page-container">
-      <div style={{display: 'flex', justifyContent: "space-between", columnGap: "100px"}}>
-        <div style={{display: 'flex', flexDirection: 'column', width: "25%", rowGap: "20px"}}>
-          <img src={testimage} alt="userimage" style={{objectFit: "cover", borderBlock: "5px solid black",
-          borderRadius: "50%", columnGap: "100px", marginTop: "110px"}} />
-          <b style={{fontSize: "25px"}}>NAME</b>
-          <p align="left" style={{fontSize: "15px"}}>description</p>
+      <div className="profile-flex-box-container">
+        <div className="profile-card-container">
+          <img className="profile-photo"src={testimage} alt="userimage"/>
+          <b className="profile-name">NAME</b>
+          <p className="profile-description"align="left">description</p> {/*LIMIT THE LENGTH OF THIS DESCRIPTION */}
         </div>
-        <div style={{display: 'flex', flexDirection: 'column', width: "73%"}}>
-        <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
+        <div className="profile-events-container">
+          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
+          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
+          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
+          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
+          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
+        
         </div>
       </div>
     </div>
