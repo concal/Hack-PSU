@@ -78,7 +78,6 @@ const ClubCreationPage = () => {
                     onChange={(evt) => setCategory(evt.value)}
                     placeholder="Select an option"
                 />
-                ;
             </form>
             <button
                 className="club-creation-page-button"
