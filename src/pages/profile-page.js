@@ -17,10 +17,7 @@ const ProfilePage = () => {
         </div>
         <div className="profile-events-container">
           <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
-          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
-          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
-          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
-          <Card title={"hi"} clubName={"hi"} description={"hi"} location={"hi"} startTime={"hi"} endTime={"hi"} style={{}}/>
+          
         
         </div>
       </div>
