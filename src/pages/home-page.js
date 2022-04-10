@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../components/card"
-import adImage from "../testimages/ad-image.jpg"
+import adImage from "../testimages/adimage.jpg"
 import dummydata from "../dummydata";
 
 const HomePage = () => {
@@ -22,7 +22,7 @@ const HomePage = () => {
                 <div className="home-page-cards-container">
                     {cardElements}
                 </div>
-                <img src={adImage} className="home-page-ad-image"></img>
+                <img alt="adimage" src={adImage} className="home-page-ad-image"></img>
             </div>
         </div>
     )
