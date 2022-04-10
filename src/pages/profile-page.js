@@ -9,6 +9,7 @@ const ProfilePage = () => {
     const cardElements = events.map((event) => {
         return (
             <Card
+                isLoggedIn={true}
                 favorites={events.map((event) => event.event_id)}
                 event_id={event.event_id}
                 key={event.event_id}
@@ -18,6 +19,7 @@ const ProfilePage = () => {
                 location={event.location}
                 startTime={event.start_time}
                 endTime={event.end_time}
+                date={event.date}
             />
         );
     });

@@ -24,7 +24,13 @@ const App = () => {
                 <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
                 <div className="main-content-container">
                     <Switch>
-                        <Route exact path="/" component={() => <HomePage />} />
+                        <Route
+                            exact
+                            path="/"
+                            component={() => (
+                                <HomePage isLoggedIn={isLoggedIn} />
+                            )}
+                        />
                         <Route
                             exact
                             path="/event-organizer"

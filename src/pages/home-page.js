@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Card from '../components/card';
 import adImage from '../testimages/adimage.jpg';
 
-const HomePage = () => {
+const HomePage = ({ isLoggedIn }) => {
     const [events, setEvents] = useState([]);
     const [savedEvents, setSavedEvents] = useState([]);
 
@@ -26,6 +26,7 @@ const HomePage = () => {
         return (
             <Card
                 favorites={savedEvents.map((event) => event.event_id)}
+                isLoggedIn={isLoggedIn}
                 event_id={event.event_id}
                 key={event.event_id}
                 title={event.title}
@@ -34,27 +35,30 @@ const HomePage = () => {
                 location={event.location}
                 startTime={event.start_time}
                 endTime={event.end_time}
+                date={event.date}
             />
         );
     });
 
     useEffect(() => {
-        const fetchSavedEvents = async () => {
-            const user_email = sessionStorage.getItem('user');
-            let result = await fetch('http://localhost:5000/users/events', {
-                method: 'post',
-                body: JSON.stringify({
-                    email: user_email,
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            result = await result.json();
-            setSavedEvents(result);
-        };
+        if (isLoggedIn) {
+            const fetchSavedEvents = async () => {
+                const user_email = sessionStorage.getItem('user');
+                let result = await fetch('http://localhost:5000/users/events', {
+                    method: 'post',
+                    body: JSON.stringify({
+                        email: user_email,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                result = await result.json();
+                setSavedEvents(result);
+            };
 
-        fetchSavedEvents();
+            fetchSavedEvents();
+        }
     }, []);
 
     return (

@@ -50,7 +50,7 @@ const ClubCreationPage = () => {
             result = await result.json();
             console.warn(result);
             if (result) {
-                alert('Data saved successfully');
+                alert('Club created successfully');
                 setRedirect(true);
             }
         },

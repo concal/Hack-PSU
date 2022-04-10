@@ -31,6 +31,8 @@ const LoginPage = ({ setIsLoggedIn }) => {
                 sessionStorage.setItem('user', email);
                 setRedirect(true);
                 setIsLoggedIn(true);
+            } else {
+                alert('incorrect email or password');
             }
         },
         [email, password, setIsLoggedIn]

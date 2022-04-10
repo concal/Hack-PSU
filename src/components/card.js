@@ -40,17 +40,19 @@ const Card = (prop) => {
     return (
         <div className="card-container">
             <span className="card-firstline">
-                {favorite ? (
-                    <FontAwesomeIcon
-                        icon={faStar}
-                        onClick={handleFavoriteChange}
-                    />
-                ) : (
-                    <FontAwesomeIcon
-                        icon={emptyStar}
-                        onClick={handleFavoriteChange}
-                    />
-                )}
+                {prop.isLoggedIn &&
+                    (favorite ? (
+                        <FontAwesomeIcon
+                            icon={faStar}
+                            onClick={handleFavoriteChange}
+                        />
+                    ) : (
+                        <FontAwesomeIcon
+                            icon={emptyStar}
+                            onClick={handleFavoriteChange}
+                        />
+                    ))}
+
                 <h3 className="card-title">{prop.title}</h3>
                 {prop.clubName && <h3>-</h3>}
                 <h3 className="card-clubname">{prop.clubName}</h3>
@@ -58,6 +60,7 @@ const Card = (prop) => {
             <p className="card-description">{prop.description}</p>
             <span className="card-thirdline">
                 <h3 className="card-location">{prop.location}</h3>
+                <h3 className="card-location">{prop.date}</h3>
                 <h3 className="card-starttime">{prop.startTime}</h3>
                 <h3>-</h3>
                 <h3 className="card-endtime">{prop.endTime}</h3>
