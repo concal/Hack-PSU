@@ -51,6 +51,18 @@ const EventCreationPage = () => {
             e.preventDefault();
             const { event_id } = await getEventId();
             const user_email = sessionStorage.getItem('user');
+            console.log({
+                event_id,
+                is_official: club_id !== -1,
+                club_id: club_id === -1 ? null : club_id,
+                user_email,
+                start_time,
+                end_time,
+                location,
+                description,
+                title,
+                date,
+            });
             let result = await fetch('http://localhost:5000/createEvent', {
                 method: 'post',
                 body: JSON.stringify({
@@ -72,26 +84,22 @@ const EventCreationPage = () => {
             result = await result.json();
             console.warn(result);
             if (result) {
-                alert('Data saved successfully');
+                alert('Event created successfully');
                 setRedirect(true);
             }
         },
         [club_id, start_time, end_time, location, description, title, date]
     );
 
-    const updateClubId = (value) => {
-        // Get the proper club id for the club name
-        setClubId(-1);
-    };
-
     const ClubDropdown = useMemo(() => {
-        const categories = userClubs.map((clubInfo) => clubInfo.club_name);
-        categories.unshift('No club affiliation');
-        console.log(categories);
+        const categories = userClubs.map((clubInfo) => {
+            return { value: clubInfo.club_id, label: clubInfo.club_name };
+        });
+        categories.unshift({ value: -1, label: 'No club affiliation' });
         return (
             <Dropdown
                 options={categories}
-                onChange={(evt) => updateClubId(evt.value)}
+                onChange={(evt) => setClubId(evt.value)}
                 placeholder="Select an option"
             />
         );
@@ -111,7 +119,7 @@ const EventCreationPage = () => {
                 />
                 <label for="clubName">Club Name:</label>
                 {/* CHANGE TO DROPDOWN MENU */}
-                <ClubDropdown />
+                {ClubDropdown}
                 {/* <input
                     type="text"
                     onChange={(evt) => {
