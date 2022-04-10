@@ -136,7 +136,6 @@ app.post('/register/user', async (req, resp) => {
         result = result.toObject();
         if (result) {
             resp.send(req.body);
-            console.log(result);
         } else {
             console.log('User already register');
         }
@@ -251,6 +250,52 @@ app.post('/clubs/name', async (req, resp) => {
         const result = await Club.findOne({ club_id: club_id });
         console.log(result.club_name);
         resp.send({ club_name: result.club_name });
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
+app.post('/users/events', async (req, resp) => {
+    try {
+        const email = req.body.email;
+        const user_info = await User.findOne({ email });
+        const event_ids = user_info.event_ids;
+        const result = await Event.find({ event_id: event_ids });
+        resp.send(result);
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
+app.post('/users/update/favorites', async (req, resp) => {
+    try {
+        const email = req.body.email;
+        const event_id = req.body.event_id;
+        const user_info = await User.findOne({ email });
+        favorites = user_info.event_ids;
+        if (favorites.includes(event_id)) {
+            favorites.remove(event_id);
+        } else {
+            favorites.push(event_id);
+        }
+        const response = await User.updateOne(
+            { email },
+            { event_ids: favorites }
+        );
+        resp.send({ response });
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
+app.post('/users/info', async (req, resp) => {
+    try {
+        const email = req.body.email;
+        const user_info = await User.findOne({ email });
+        resp.send(user_info);
     } catch (e) {
         console.log(e);
         resp.send('Something Went Wrong');

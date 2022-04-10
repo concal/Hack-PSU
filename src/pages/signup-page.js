@@ -15,11 +15,6 @@ const SignUpPage = () => {
             if (password !== confPassword) {
                 alert('Passwords must match');
             } else {
-                JSON.stringify({
-                    email,
-                    name,
-                    password,
-                });
                 let result = await fetch(
                     'http://localhost:5000/register/user',
                     {

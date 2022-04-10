@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import Card from '../components/card';
 import adImage from '../testimages/adimage.jpg';
 
 const HomePage = () => {
     const [events, setEvents] = useState([]);
+    const [savedEvents, setSavedEvents] = useState([]);
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -15,32 +16,18 @@ const HomePage = () => {
                 },
             });
             result = await result.json();
-            console.log(result);
-
-            // const events = result;
-
-            // const test = async (event) => {
-            //     if (event.is_official) {
-            //         const club_name = await getClubName(event.club_id);
-            //         event.club_name = club_name;
-            //     }
-            //     return event;
-            // };
-
-            // const eventsWithClubNames = events.map(await test);
-
-            // console.log(eventsWithClubNames);
-
             setEvents(result);
         };
 
         fetchEvents();
     }, []);
 
-    //mapping card elements
     const cardElements = events.map((event) => {
         return (
             <Card
+                favorites={savedEvents.map((event) => event.event_id)}
+                event_id={event.event_id}
+                key={event.event_id}
                 title={event.title}
                 clubName={event.club_name}
                 description={event.description}
@@ -50,6 +37,27 @@ const HomePage = () => {
             />
         );
     });
+
+    useEffect(() => {
+        const fetchSavedEvents = async () => {
+            const user_email = sessionStorage.getItem('user');
+            console.log('here');
+            let result = await fetch('http://localhost:5000/users/events', {
+                method: 'post',
+                body: JSON.stringify({
+                    email: user_email,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            result = await result.json();
+            setSavedEvents(result);
+        };
+
+        fetchSavedEvents();
+    }, []);
+
     return (
         <div className="home-page-container">
             <h1>
