@@ -1,6 +1,7 @@
 import React from 'react';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect, useMemo } from 'react';
 import { Redirect } from 'react-router-dom';
+import Dropdown from 'react-dropdown';
 
 const EventCreationPage = () => {
     const [club_id, setClubId] = useState(-1);
@@ -11,6 +12,28 @@ const EventCreationPage = () => {
     const [description, setDescription] = useState('');
     const [title, setTitle] = useState('');
     const [redirect, setRedirect] = useState(false);
+    const [userClubs, setUserClubs] = useState([]);
+
+    useEffect(() => {
+        console.log('effecting');
+        const fetchClubs = async () => {
+            const user_email = sessionStorage.getItem('user');
+            let result = await fetch('http://localhost:5000/clubs/user', {
+                method: 'post',
+                body: JSON.stringify({
+                    email: user_email,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            result = await result.json();
+            console.log(result);
+            setUserClubs(result);
+        };
+
+        fetchClubs();
+    }, []);
 
     const getEventId = async () => {
         let result = await fetch('http://localhost:5000/newEventID', {
@@ -61,6 +84,19 @@ const EventCreationPage = () => {
         setClubId(-1);
     };
 
+    const ClubDropdown = useMemo(() => {
+        const categories = userClubs.map((clubInfo) => clubInfo.club_name);
+        categories.unshift('No club affiliation');
+        console.log(categories);
+        return (
+            <Dropdown
+                options={categories}
+                onChange={(evt) => updateClubId(evt.value)}
+                placeholder="Select an option"
+            />
+        );
+    }, [userClubs]);
+
     return (
         <div className="event-creation-page-container">
             {redirect && <Redirect push to="/" />}
@@ -75,12 +111,13 @@ const EventCreationPage = () => {
                 />
                 <label for="clubName">Club Name:</label>
                 {/* CHANGE TO DROPDOWN MENU */}
-                <input
+                <ClubDropdown />
+                {/* <input
                     type="text"
                     onChange={(evt) => {
                         updateClubId(evt.target.value);
                     }}
-                />
+                /> */}
                 <label for="description">Description:</label>
                 <input
                     type="text"

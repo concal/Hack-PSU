@@ -229,4 +229,17 @@ app.get('/events', async (req, resp) => {
     }
 });
 
+app.post('/clubs/user', async (req, resp) => {
+    try {
+        const email = req.body.email;
+        // filters
+        // pages
+        const result = await Club.find({ owner_email: email });
+        resp.send(result);
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
 app.listen(5000);

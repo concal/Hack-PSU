@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import Card from '../components/card';
 import adImage from '../testimages/adimage.jpg';
-import dummydata from '../dummydata';
 
 const HomePage = () => {
     const [events, setEvents] = useState([]);
