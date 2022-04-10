@@ -2,9 +2,11 @@ import React from 'react';
 import Card from '../components/card';
 import testimage from '../testimages/TESTUSER.jpg'
 
-//api call -> users api from mongodb -> returns json object
 
 const ProfilePage = () => {
+//api call
+// response
+
   return (
     <div className="profile-page-container">
       <div className="profile-flex-box-container">
