@@ -178,7 +178,7 @@ app.post('/login', async (req, resp) => {
     try {
         const email = req.body.email;
         const inputPassword = req.body.password;
-        const result = await User.find({ email: 'cfc5489@psu.edu' });
+        const result = await User.find({ email });
         if (result.length == 0) {
             resp.send(false);
         } else {

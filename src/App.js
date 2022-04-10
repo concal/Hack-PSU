@@ -57,6 +57,11 @@ const App = () => {
                             path="/club-creation"
                             component={() => <ClubCreationPage />}
                         />
+                        <Route
+                            exact
+                            path="/signup"
+                            component={() => <SignUpPage />}
+                        />
                     </Switch>
                 </div>
                 <Footer />
