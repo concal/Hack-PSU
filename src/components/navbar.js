@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, Fragment } from 'react';
+import { useState, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

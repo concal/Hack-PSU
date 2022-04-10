@@ -33,7 +33,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                 setIsLoggedIn(true);
             }
         },
-        [email, password]
+        [email, password, setIsLoggedIn]
     );
 
     return (

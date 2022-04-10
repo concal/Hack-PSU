@@ -217,4 +217,16 @@ app.get('/newClubID', async (req, resp) => {
     }
 });
 
+app.get('/events', async (req, resp) => {
+    try {
+        // filters
+        // pages
+        const result = await Event.find();
+        resp.send(result);
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
 app.listen(5000);

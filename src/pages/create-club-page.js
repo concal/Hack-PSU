@@ -34,13 +34,6 @@ const ClubCreationPage = () => {
             e.preventDefault();
             const { club_id } = await getClubId();
             const owner_email = sessionStorage.getItem('user');
-            console.log({
-                club_name,
-                club_description,
-                category,
-                club_id,
-                owner_email,
-            });
             let result = await fetch('http://localhost:5000/register/club', {
                 method: 'post',
                 body: JSON.stringify({
