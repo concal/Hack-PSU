@@ -53,7 +53,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                     />
                     <label for="email">Password:</label>
                     <input
-                        type="text"
+                        type="password"
                         onChange={(evt) => {
                             setPassword(evt.target.value);
                         }}

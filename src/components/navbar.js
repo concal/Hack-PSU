@@ -23,15 +23,29 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
                     to="./"
                     className="navbar-logo-link"
                 >
-                    Home Page
+                    Nittany Lion Event Hub
                 </Link>
                 {isLoggedIn && (
                     <Fragment>
                         <Link to="./club-creation" className="navbar-link">
-                            <Button variant="success">Create a Club</Button>
+                            <Button
+                                style={{
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                }}
+                            >
+                                Create a Club
+                            </Button>
                         </Link>
                         <Link to="./event-creation" className="navbar-link">
-                            <Button variant="success">Create an Event</Button>
+                            <Button
+                                style={{
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                }}
+                            >
+                                Create an Event
+                            </Button>
                         </Link>
                     </Fragment>
                 )}
@@ -54,13 +68,20 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
                                 }}
                             />
                         </Link>
-                        <Button variant="success" onClick={logout}>
+                        <Button
+                            style={{ backgroundColor: 'white', color: 'black' }}
+                            onClick={logout}
+                        >
                             Log out
                         </Button>
                     </div>
                 ) : (
                     <Link to="/login">
-                        <Button variant="success">Log in</Button>
+                        <Button
+                            style={{ backgroundColor: 'white', color: 'black' }}
+                        >
+                            Log in
+                        </Button>
                     </Link>
                 )}
             </div>

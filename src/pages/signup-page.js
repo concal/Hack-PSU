@@ -71,14 +71,14 @@ const SignUpPage = () => {
                 />
                 <label for="password">Password:</label>
                 <input
-                    type="text"
+                    type="password"
                     onChange={(evt) => {
                         updatePassword(evt.target.value);
                     }}
                 />
                 <label for="passwordCon">Confirm Password:</label>
                 <input
-                    type="text"
+                    type="password"
                     onChange={(evt) => {
                         updateConfPassword(evt.target.value);
                     }}

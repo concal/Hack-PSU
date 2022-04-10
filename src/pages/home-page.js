@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Card from '../components/card';
 import adImage from '../testimages/adimage.jpg';
+import adImage1 from '../testimages/adImage1.png';
+import adImage2 from '../testimages/adImage2.png';
 
 const HomePage = ({ isLoggedIn }) => {
     const [events, setEvents] = useState([]);
@@ -62,17 +64,37 @@ const HomePage = ({ isLoggedIn }) => {
     }, []);
 
     return (
+        //     <div className="home-page-container">
+        //         <h1>
+        //             <b>Event List</b>
+        //         </h1>
+        //         <div className="home-page-combined-container">
+        //             <div className="home-page-cards-container">{cardElements}</div>
+        //             <img
+        //                 alt="adimage"
+        //                 src={adImage}
+        //                 className="home-page-ad-image"
+        //             ></img>
+        //         </div>
+        //     </div>
         <div className="home-page-container">
             <h1>
                 <b>Event List</b>
             </h1>
             <div className="home-page-combined-container">
                 <div className="home-page-cards-container">{cardElements}</div>
-                <img
-                    alt="adimage"
-                    src={adImage}
-                    className="home-page-ad-image"
-                ></img>
+                <div className="home-page-ad-container">
+                    <img
+                        className="home-page-ad-image"
+                        src={adImage1}
+                        alt="adimage1"
+                    />
+                    <img
+                        className="home-page-ad-image"
+                        src={adImage2}
+                        alt="adimage2"
+                    />
+                </div>
             </div>
         </div>
     );
