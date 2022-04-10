@@ -55,6 +55,9 @@ const EventSchema = new mongoose.Schema({
     club_id: {
         type: Number,
     },
+    club_name: {
+        type: String,
+    },
     user_email: {
         type: String,
     },
@@ -161,6 +164,7 @@ app.post('/register/club', async (req, resp) => {
 app.post('/createEvent', async (req, resp) => {
     try {
         const event = new Event(req.body);
+        console.log(req.body);
         let result = await event.save();
         result = result.toObject();
         if (result) {
@@ -222,6 +226,7 @@ app.get('/events', async (req, resp) => {
         // filters
         // pages
         const result = await Event.find();
+        console.log(result);
         resp.send(result);
     } catch (e) {
         console.log(e);
@@ -229,13 +234,23 @@ app.get('/events', async (req, resp) => {
     }
 });
 
-app.post('/clubs/user', async (req, resp) => {
+app.post('/clubs', async (req, resp) => {
     try {
         const email = req.body.email;
-        // filters
-        // pages
         const result = await Club.find({ owner_email: email });
         resp.send(result);
+    } catch (e) {
+        console.log(e);
+        resp.send('Something Went Wrong');
+    }
+});
+
+app.post('/clubs/name', async (req, resp) => {
+    try {
+        const club_id = req.body.club_id;
+        const result = await Club.findOne({ club_id: club_id });
+        console.log(result.club_name);
+        resp.send({ club_name: result.club_name });
     } catch (e) {
         console.log(e);
         resp.send('Something Went Wrong');

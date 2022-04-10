@@ -1,13 +1,11 @@
-import React from "react";
-
-
+import React from 'react';
 
 const Card = (prop) => {
     return (
         <div className="card-container">
             <span className="card-firstline">
                 <h3 className="card-title">{prop.title}</h3>
-                <h3>-</h3>
+                {prop.clubName && <h3>-</h3>}
                 <h3 className="card-clubname">{prop.clubName}</h3>
             </span>
             <p className="card-description">{prop.description}</p>
@@ -18,7 +16,7 @@ const Card = (prop) => {
                 <h3 className="card-endtime">{prop.endTime}</h3>
             </span>
         </div>
-    )
-}
+    );
+};
 
 export default Card;

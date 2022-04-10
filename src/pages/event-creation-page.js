@@ -5,6 +5,7 @@ import Dropdown from 'react-dropdown';
 
 const EventCreationPage = () => {
     const [club_id, setClubId] = useState(-1);
+    const [club_name, setClubName] = useState(null);
     const [date, setDate] = useState('');
     const [start_time, setStartTime] = useState(new Date());
     const [end_time, setEndTime] = useState(new Date());
@@ -14,11 +15,12 @@ const EventCreationPage = () => {
     const [redirect, setRedirect] = useState(false);
     const [userClubs, setUserClubs] = useState([]);
 
+    console.log(club_name);
+
     useEffect(() => {
-        console.log('effecting');
         const fetchClubs = async () => {
             const user_email = sessionStorage.getItem('user');
-            let result = await fetch('http://localhost:5000/clubs/user', {
+            let result = await fetch('http://localhost:5000/clubs', {
                 method: 'post',
                 body: JSON.stringify({
                     email: user_email,
@@ -51,24 +53,13 @@ const EventCreationPage = () => {
             e.preventDefault();
             const { event_id } = await getEventId();
             const user_email = sessionStorage.getItem('user');
-            console.log({
-                event_id,
-                is_official: club_id !== -1,
-                club_id: club_id === -1 ? null : club_id,
-                user_email,
-                start_time,
-                end_time,
-                location,
-                description,
-                title,
-                date,
-            });
             let result = await fetch('http://localhost:5000/createEvent', {
                 method: 'post',
                 body: JSON.stringify({
                     event_id,
                     is_official: club_id !== -1,
                     club_id: club_id === -1 ? null : club_id,
+                    club_name: club_id === -1 ? null : club_name,
                     user_email,
                     start_time,
                     end_time,
@@ -88,7 +79,16 @@ const EventCreationPage = () => {
                 setRedirect(true);
             }
         },
-        [club_id, start_time, end_time, location, description, title, date]
+        [
+            club_id,
+            club_name,
+            start_time,
+            end_time,
+            location,
+            description,
+            title,
+            date,
+        ]
     );
 
     const ClubDropdown = useMemo(() => {
@@ -99,7 +99,10 @@ const EventCreationPage = () => {
         return (
             <Dropdown
                 options={categories}
-                onChange={(evt) => setClubId(evt.value)}
+                onChange={(evt) => {
+                    setClubId(evt.value);
+                    setClubName(evt.label);
+                }}
                 placeholder="Select an option"
             />
         );

@@ -16,14 +16,25 @@ const HomePage = () => {
             });
             result = await result.json();
             console.log(result);
+
+            // const events = result;
+
+            // const test = async (event) => {
+            //     if (event.is_official) {
+            //         const club_name = await getClubName(event.club_id);
+            //         event.club_name = club_name;
+            //     }
+            //     return event;
+            // };
+
+            // const eventsWithClubNames = events.map(await test);
+
+            // console.log(eventsWithClubNames);
+
             setEvents(result);
         };
 
         fetchEvents();
-    }, []);
-
-    const getClubName = useCallback(() => {
-        return 'CLUB NAME';
     }, []);
 
     //mapping card elements
@@ -31,7 +42,7 @@ const HomePage = () => {
         return (
             <Card
                 title={event.title}
-                clubName={event.club_id ? getClubName(event.club_id) : null}
+                clubName={event.club_name}
                 description={event.description}
                 location={event.location}
                 startTime={event.start_time}

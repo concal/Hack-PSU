@@ -35,16 +35,6 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
                         </Link>
                     </Fragment>
                 )}
-                {isLoggedIn && (
-                    <Link to="./club-creation" className="navbar-link">
-                        <Button
-                            style={{ backgroundColor: 'white', color: 'black' }}
-                            variant="success"
-                        >
-                            Create a Club
-                        </Button>
-                    </Link>
-                )}
             </div>
             <div className="navbar-section">
                 {isLoggedIn ? (
