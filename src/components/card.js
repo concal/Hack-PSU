@@ -45,11 +45,19 @@ const Card = (prop) => {
                         <FontAwesomeIcon
                             icon={faStar}
                             onClick={handleFavoriteChange}
+                            style={{
+                                color: 'rgb(245, 194, 107)',
+                                height: '28px',
+                            }}
                         />
                     ) : (
                         <FontAwesomeIcon
                             icon={emptyStar}
                             onClick={handleFavoriteChange}
+                            style={{
+                                color: 'rgb(245, 194, 107)',
+                                height: '28px',
+                            }}
                         />
                     ))}
 

@@ -64,19 +64,6 @@ const HomePage = ({ isLoggedIn }) => {
     }, []);
 
     return (
-        //     <div className="home-page-container">
-        //         <h1>
-        //             <b>Event List</b>
-        //         </h1>
-        //         <div className="home-page-combined-container">
-        //             <div className="home-page-cards-container">{cardElements}</div>
-        //             <img
-        //                 alt="adimage"
-        //                 src={adImage}
-        //                 className="home-page-ad-image"
-        //             ></img>
-        //         </div>
-        //     </div>
         <div className="home-page-container">
             <h1>
                 <b>Event List</b>
