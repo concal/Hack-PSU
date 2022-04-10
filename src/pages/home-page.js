@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../components/card"
-
+import adImage from "../testimages/adimage.jpg"
 import dummydata from "../dummydata";
 
 const HomePage = () => {
@@ -17,8 +17,13 @@ const HomePage = () => {
     })
     return (
         <div className="home-page-container">
-            <h1>Home Page!</h1>
-            {cardElements}
+            <h1><b>Event List</b></h1>
+            <div className="home-page-combined-container">
+                <div className="home-page-cards-container">
+                    {cardElements}
+                </div>
+                <img alt="adimage" src={adImage} className="home-page-ad-image"></img>
+            </div>
         </div>
     )
 }

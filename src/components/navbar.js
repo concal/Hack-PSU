@@ -18,8 +18,12 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <div className="navbar-container">
             {redirect && <Redirect push to="/" />}
             <div className="navbar-section">
-                <Link to="./" className="navbar-logo-link">
-                    Give me a Nintendo Switch :)
+                <Link
+                    style={{ color: 'white' }}
+                    to="./"
+                    className="navbar-logo-link"
+                >
+                    Home Page
                 </Link>
                 {isLoggedIn && (
                     <Fragment>
@@ -30,6 +34,16 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
                             <Button variant="success">Create an Event</Button>
                         </Link>
                     </Fragment>
+                )}
+                {isLoggedIn && (
+                    <Link to="./club-creation" className="navbar-link">
+                        <Button
+                            style={{ backgroundColor: 'white', color: 'black' }}
+                            variant="success"
+                        >
+                            Create a Club
+                        </Button>
+                    </Link>
                 )}
             </div>
             <div className="navbar-section">

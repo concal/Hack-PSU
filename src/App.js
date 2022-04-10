@@ -18,7 +18,6 @@ const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(
         sessionStorage.getItem('user') !== null
     );
-
     return (
         <Router>
             <div className="App">
@@ -52,11 +51,6 @@ const App = () => {
                             exact
                             path="/profile"
                             component={() => <ProfilePage />}
-                        />
-                        <Route
-                            exact
-                            path="/signup"
-                            component={() => <SignUpPage />}
                         />
                         <Route
                             exact
