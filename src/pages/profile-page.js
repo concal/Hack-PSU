@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../components/card';
-import testimage from '../testimages/TESTUSER.jpg'
+import testimage from '.../public/testimages/TESTUSER.jpg'
 
 
 const ProfilePage = () => {
