@@ -10,11 +10,12 @@ import EventCreationPage from './pages/event-creation-page';
 import EventPage from './pages/event-page';
 import LoginPage from './pages/login-page';
 import ProfilePage from './pages/profile-page';
+import ClubCreationPage from "./pages/club-creation-page"
 
 const App = () => {
     // const handleAddUser = async (e) => {
     //     e.preventDefault();
-    //     let result = await fetch('http://localhost:5000/register/user', {
+    //     let result = await fetch('http://localhost:6000/register/user', {
     //         method: 'post',
     //         body: JSON.stringify({
     //             name: 'connor calderon',
@@ -38,7 +39,7 @@ const App = () => {
 
     // const handleAddClub = async (e) => {
     //     e.preventDefault();
-    //     let result = await fetch('http://localhost:5000/register/club', {
+    //     let result = await fetch('http://localhost:6000/register/club', {
     //         method: 'post',
     //         body: JSON.stringify({
     //             club_id: 1,
@@ -58,33 +59,7 @@ const App = () => {
     //     }
     // };
 
-    // const handleAddEvent = async (e) => {
-    //     e.preventDefault();
-    //     let result = await fetch('http://localhost:5000/createEvent', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             event_id: 1,
-    //             is_official: true,
-    //             club_id: 1,
-    //             user_email: null,
-    //             start_time: Date(100),
-    //             end_time: Date(200),
-    //             location: 'IM Building',
-    //             description: 'This event is very cool',
-    //             title: 'The coolest event',
-    //         }),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-    //     result = await result.json();
-    //     console.warn(result);
-    //     if (result) {
-    //         alert('Data saved successfully');
-    //         // Reset input fields
-    //     }
-    // };
-    //
+
 
     return (
         <Router>
@@ -117,6 +92,11 @@ const App = () => {
                             exact
                             path="/profile"
                             component={() => <ProfilePage />}
+                        />
+                        <Route
+                            exact
+                            path="/club-creation"
+                            component={() => <ClubCreationPage />}
                         />
                     </Switch>
                 </div>
