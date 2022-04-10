@@ -37,6 +37,8 @@ const Card = (prop) => {
         [favorite, setFavorite, prop.event_id]
     );
 
+    console.log(prop.location);
+
     return (
         <div className="card-container">
             <span className="card-firstline">
