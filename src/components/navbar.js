@@ -19,6 +19,12 @@ const Navbar = () => {
                         <Button variant="success">Create an Event</Button>
                     </Link>
                 )}
+                {isLoggedIn && (
+                    <Link to="./club-creation" className="navbar-link">
+                        <Button variant="success">Create a Club</Button>
+                    </Link>
+                )}
+                
             </div>
             <div className="navbar-section">
                 {isLoggedIn ? (
