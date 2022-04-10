@@ -40,11 +40,21 @@
 /* NAVBAR                         */
 /* ============================== */
 .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #f2f2f2;
     /* color: #......; <- TEXT COLOR */
     width: 100%;
+    height: 60px;
     font-size: 20px;
     text-align: center;
+    padding: 12px;
+}
+
+.navbar-section {
+    display: flex;
+    align-items: center;
 }
 
 .navbar-links {
@@ -53,20 +63,14 @@
 
 .navbar-link {
     color: black;
-    /* color: #......; <- TEXT COLOR */
-    padding-top: 24px;
-    float: right;
-    height: 60px;
-    width: 10%;
+    padding-left: 12px;
+    padding-right: 12px;
     text-decoration: none;
 }
 
 .navbar-logo-link {
     color: black;
-    /* color: #......; <- TEXT COLOR */
-    padding-top: 22px;
-    margin-left: 40px;
-    float: left;
+    padding-right: 12px;
     font-size: 24px;
     text-decoration: none;
 }
